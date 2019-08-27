@@ -1,5 +1,5 @@
 import javax.swing.JFrame;
-// you left off on the VIEW part of the module (ADD Text)
+// you left off on the CONTROL - part 1 (started Game Control (keys))
 public class LeagueInvaders {
 	JFrame frame;
 	GamePanel GP;
