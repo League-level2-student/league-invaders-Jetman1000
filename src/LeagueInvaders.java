@@ -1,5 +1,5 @@
 import javax.swing.JFrame;
-// you left off on the CONTROL - part 1 (started Game Control (keys))
+// you left off on the Model(almost done with Rocket (move)) **find a way to prevent the square from leaving the window and make the movement smoother.**
 public class LeagueInvaders {
 	JFrame frame;
 	GamePanel GP;
@@ -20,6 +20,7 @@ public class LeagueInvaders {
 		frame.add(GP);
 		frame.setSize(WIDTH, HEIGHT);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.addKeyListener(GP);
 		frame.setVisible(true);
 	}
 	
