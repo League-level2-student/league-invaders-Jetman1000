@@ -1,5 +1,5 @@
 import javax.swing.JFrame;
-// you left off on the Model(almost done with Rocket (move)) **find a way to prevent the square from leaving the window and make the movement smoother.**
+// you left off on the Model(Alien and Projectile) 
 public class LeagueInvaders {
 	JFrame frame;
 	GamePanel GP;
