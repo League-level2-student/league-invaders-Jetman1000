@@ -1,11 +1,14 @@
+import java.util.ArrayList;
 
 public class GameObject {
+	//member variables
 int x;
 int y;
 int width;
 int height;
 int speed=0;
-boolean isActive=true;
+static boolean isActive=true;
+//constructor
 GameObject(int x, int y, int width, int height){
 	this.x=x;
 	this.y=y;
@@ -13,11 +16,10 @@ GameObject(int x, int y, int width, int height){
 	this.height=height;
 	this.speed=speed;
 	this.isActive=isActive;
+	ArrayList<Object> projectiles=new ArrayList<Object>(); 
+
 	}
 
-void update() {
-	
-}
 
 
 }

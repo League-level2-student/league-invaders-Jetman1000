@@ -1,5 +1,5 @@
 import javax.swing.JFrame;
-// you left off on the Model(Alien and Projectile) 
+// you left off on the Model Management ObjectManager (#5) 
 public class LeagueInvaders {
 	JFrame frame;
 	GamePanel GP;
