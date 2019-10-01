@@ -5,7 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -20,17 +22,27 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	final int GAME = 1;
 	final int END = 2; 
 	
+	public static BufferedImage image;
+	public static boolean needImage = true;
+	public static boolean gotImage = false;	
+
+	
 	int currentState = MENU;
 	
 	Rocketship rocket=new Rocketship(Rocketship.x,Rocketship.y,50,50);
+	ObjectManager OM=new ObjectManager(rocket);
 	
 	GamePanel(){
 		titleFont = new Font("Arial",Font.PLAIN, 48);
 		startFont = new Font("Arial",Font.PLAIN, 30);
 		instructionsFont = new Font("Arial",Font.PLAIN, 28);
+		this.OM=OM;
 		//the first parameter is in milliseconds (1000 milliseconds = 1 second)
 		frameDraw = new Timer(1000/60,this);
 		frameDraw.start();
+		if (needImage) {
+		    loadImage ("space.png");
+		}
 	}
 	
 	@Override
@@ -51,6 +63,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	void updateGameState() {
 		rocket.update();
+		OM.update();
 	}
 	void updateEndState() {
 		
@@ -76,8 +89,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
 	void drawGameState(Graphics g) {
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
-		rocket.draw(g);
+		if (gotImage) {
+			g.drawImage(image, 0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT, null);
+		} else {
+			g.setColor(Color.BLUE);
+			g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
+		}
+
+		OM.draw(g);
+		
 	}
 	
 	void drawEndState(Graphics g) {
@@ -176,5 +196,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		    rocket.right = false;
 			System.out.println("UP");
 		}
+	}
+	
+	void loadImage(String imageFile) {
+	    if (needImage) {
+	        try {
+	            image = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
+		    gotImage = true;
+	        } catch (Exception e) {
+	            
+	        }
+	        needImage = false;
+	    }
 	}
 }

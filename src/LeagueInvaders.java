@@ -1,5 +1,5 @@
 import javax.swing.JFrame;
-// you left off on the Model Management ObjectManager (#5) 
+// you are starting CONRTOL - part 2 (alien and projectile spawn)
 public class LeagueInvaders {
 	JFrame frame;
 	GamePanel GP;
