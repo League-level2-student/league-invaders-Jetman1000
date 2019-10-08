@@ -15,8 +15,10 @@ public class Rocketship extends GameObject{
 	boolean down = false;
 	boolean left = false;
 	boolean right = false;
-	public static int x= 250;
-	public static int y= 700;
+	
+	boolean space = false;
+	
+
 	Rocketship(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		if (needImage) {
@@ -40,6 +42,8 @@ public class Rocketship extends GameObject{
  
  void update() {
 	
+	
+	 
 	 if(up == true) {
 		 up();
 	 }
@@ -105,6 +109,9 @@ void loadImage(String imageFile) {
         needImage = false;
     }
 }
-
+// this method makes a projectile from the center of the rocket
+public Projectile getProjectile() {
+	return new Projectile(x+width/2,y,10,10);
+}
 
 }

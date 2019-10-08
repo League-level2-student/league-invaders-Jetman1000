@@ -1,5 +1,5 @@
 import javax.swing.JFrame;
-// you are starting CONRTOL - part 2 (alien and projectile spawn)
+// you are starting CONRTOL - part 2 (collision management)
 public class LeagueInvaders {
 	JFrame frame;
 	GamePanel GP;

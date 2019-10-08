@@ -1,9 +1,11 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class ObjectManager {
+public class ObjectManager implements ActionListener {
 //member variables
 	 Rocketship rocket;
 	  ArrayList<Alien> AlienObjects=new ArrayList<Alien>();
@@ -21,6 +23,7 @@ Random random=new Random();
 //methods
 	 //This method adds projectiles to the ArrayList
 	  void addProjectile(Projectile object) {
+			Projectiles.add(new Projectile(rocket.x,rocket.y,20,20));
 			
 		}
 	  
@@ -30,12 +33,16 @@ Random random=new Random();
 	  }
 	 //This iterates through all the aliens (goes through every one of the aliens) 
 	  void update() { 
+		  rocket.update();
 		  for(int i=0; i<AlienObjects.size(); i++) {
 			  Alien a=AlienObjects.get(i);
 			  a.update();
 		  }
+		  for(int i=0; i<Projectiles.size(); i++) {
+			  Projectile p=Projectiles.get(i);
+			  p.update();
 	  }
-	  
+}
 	  void draw(Graphics g) {
 		  rocket.draw(g);
 		  for(int i=0; i<AlienObjects.size(); i++) {
@@ -62,5 +69,18 @@ Random random=new Random();
 			  }
 		  }
 	  }
+
+ void reset() {
+	AlienObjects.clear();
+	Projectiles.clear();
+}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		addAlien();
+		
+		
+	}
 }  
 
