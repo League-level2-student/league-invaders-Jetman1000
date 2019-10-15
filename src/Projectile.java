@@ -38,7 +38,9 @@ void draw(Graphics g) {
 	}
 }
 void update() {
+	super.update();
 	y-=speed;
+
 }
 void loadImage(String imageFile) {
     if (needImage) {

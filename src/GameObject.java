@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.awt.Rectangle;
 
 public class GameObject {
 	//member variables
@@ -7,19 +7,20 @@ int y;
 int width;
 int height;
 int speed=0;
-static boolean isActive=true;
+boolean isActive=true;
+Rectangle collisionBox;
 //constructor
 GameObject(int x, int y, int width, int height){
 	this.x=x;
 	this.y=y;
 	this.width=width;
 	this.height=height;
-	this.speed=speed;
-	this.isActive=isActive;
-	ArrayList<Object> projectiles=new ArrayList<Object>(); 
-
+	 collisionBox= new Rectangle(x,y,width,height);
 	}
-
+void update() {
+	collisionBox.setBounds(x,y,width,height);
+	
+}
 
 
 }

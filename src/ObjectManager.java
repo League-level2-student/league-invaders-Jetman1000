@@ -37,11 +37,16 @@ Random random=new Random();
 		  for(int i=0; i<AlienObjects.size(); i++) {
 			  Alien a=AlienObjects.get(i);
 			  a.update();
+			  checkCollision();
+			  purgeObjects();
 		  }
 		  for(int i=0; i<Projectiles.size(); i++) {
 			  Projectile p=Projectiles.get(i);
 			  p.update();
+			  checkCollision();
+			  purgeObjects(); 
 	  }
+		 
 }
 	  void draw(Graphics g) {
 		  rocket.draw(g);
@@ -62,7 +67,7 @@ Random random=new Random();
 				  AlienObjects.remove(i);
 			  }
 		  }
-		for(int i1=0; i1<AlienObjects.size(); i1++) {
+		for(int i1=0; i1<Projectiles.size(); i1++) {
 					  Projectile p=Projectiles.get(i1);
 					  if(p.isActive==false) {
 						  Projectiles.remove(i1);
@@ -74,7 +79,34 @@ Random random=new Random();
 	AlienObjects.clear();
 	Projectiles.clear();
 }
+ 
+ void checkCollision() {
+	 //this part of the method checks if the rocket collides with the aliens**
+	 for(int i=0; i<AlienObjects.size(); i++) {
+		  Alien a = AlienObjects.get(i); //<---- This is one out of all the aliens in the arraylist
+		  if(a.collisionBox.intersects(rocket.collisionBox)) {
+				 a.isActive=false;
+				 rocket.isActive=false;
+				 
+			 }
+		  //this part of the method checks if the projectiles collides with the aliens**
+		  for(int i1=0; i1<Projectiles.size();i1++) {
+				Projectile p= Projectiles.get(i1);
+			 if(p.collisionBox.intersects(a.collisionBox)) {
+				 a.isActive=false;
+				 p.isActive=false;
+			 }
+		
+		  }
+ 
+	 }
+	
+	
+	 
+ }
 
+ 
+ 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub

@@ -1,5 +1,5 @@
 import javax.swing.JFrame;
-// you are starting CONRTOL - part 2 (collision management)
+// you are starting CONRTOL - part 2 (Game End and Restart)
 public class LeagueInvaders {
 	JFrame frame;
 	GamePanel GP;

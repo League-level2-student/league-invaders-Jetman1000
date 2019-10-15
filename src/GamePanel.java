@@ -72,7 +72,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			frameDraw.stop();
 			OM.reset();
 		}
-		
 	}
 	void updateEndState() {
 		
