@@ -11,6 +11,7 @@ public class ObjectManager implements ActionListener {
 	  ArrayList<Alien> AlienObjects=new ArrayList<Alien>();
 	  ArrayList<Projectile> Projectiles=new ArrayList<Projectile>();
 Random random=new Random();
+int score=0;
 	 
 //constructor
 	 ObjectManager(Rocketship rocket){
@@ -31,6 +32,11 @@ Random random=new Random();
 		  AlienObjects.add(new Alien(random.nextInt(LeagueInvaders.WIDTH),0,50,50));
 
 	  }
+	  
+	  int getScore() {
+		return score;
+	  }
+	  
 	 //This iterates through all the aliens (goes through every one of the aliens) 
 	  void update() { 
 		  rocket.update();
@@ -75,9 +81,14 @@ Random random=new Random();
 		  }
 	  }
 
+void scoreReset() {
+	score=0;
+}
+	  
  void reset() {
 	AlienObjects.clear();
 	Projectiles.clear();
+
 }
  
  void checkCollision() {
@@ -88,6 +99,7 @@ Random random=new Random();
 				 a.isActive=false;
 				 rocket.isActive=false;
 				 
+				 
 			 }
 		  //this part of the method checks if the projectiles collides with the aliens**
 		  for(int i1=0; i1<Projectiles.size();i1++) {
@@ -95,6 +107,7 @@ Random random=new Random();
 			 if(p.collisionBox.intersects(a.collisionBox)) {
 				 a.isActive=false;
 				 p.isActive=false;
+				 score++;
 			 }
 		
 		  }

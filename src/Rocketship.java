@@ -29,7 +29,7 @@ public class Rocketship extends GameObject{
 		
 	}
  void draw(Graphics g) {
-	 g.setColor(Color.BLUE);
+
 	 g.fillRect(x, y, width, height);
 	 if (gotImage) {
 			g.drawImage(image, x, y, width, height, null);
@@ -41,7 +41,7 @@ public class Rocketship extends GameObject{
  }
  
  void update() {
-	
+	super.update();
 	
 	 
 	 if(up == true) {

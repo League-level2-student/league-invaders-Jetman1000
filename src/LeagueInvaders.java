@@ -1,5 +1,5 @@
 import javax.swing.JFrame;
-// you are starting CONRTOL - part 2 (Game End and Restart)
+// you are fixing the problem that you can't press ENTER when killed by alien at the END gameState and aliens do not spawn after the first ENTER has been pressed
 public class LeagueInvaders {
 	JFrame frame;
 	GamePanel GP;
