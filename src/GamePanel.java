@@ -63,12 +63,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	void updateGameState() {
 		OM.update();
-		System.out.println(rocket.isActive);
+		//System.out.println(rocket.isActive);
 		if (rocket.isActive == false) {
+			
 			currentState = END;
-			alienSpawn.stop();
-			frameDraw.stop();
-			OM.reset();
+//			alienSpawn.stop();
+//			frameDraw.stop();
+//			OM.reset();
+			
 		}
 	}
 
@@ -150,24 +152,33 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		// TODO Auto-generated method stub
 
 	}
-
+	
+	
 	@Override
 	// code for the ENTER key and the ARROW keys too.
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-			if (currentState == END) {
-				//System.out.println("i work");
-				currentState = MENU;
-				//OM.reset();
+			currentState++;
+			System.out.println(currentState);
+			if(currentState>END) {
+				currentState=MENU;
+			}
+			if (currentState == MENU) {
+				
+				OM.reset();
 //				rocket=new Rocketship(250, 700, 50, 50);
 //				OM=new ObjectManager(rocket);
+
+
+			}else if(currentState==GAME) {
 				startGame();
-
-			} else {
-				currentState++;
-
+				rocket.isActive=true;
+				rocket.x=250;
+				rocket.y=700;
 			}
+			
+			
 		}
 
 		if (e.getKeyCode() == KeyEvent.VK_SPACE && currentState == GAME) {
